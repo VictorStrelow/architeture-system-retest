@@ -15,7 +15,7 @@ public class OrdemServicoRepository {
         ordens.add(os);
     }
 
-    private int gerarId() {
+    public int gerarId() {
         return proximoId++;
     }
 

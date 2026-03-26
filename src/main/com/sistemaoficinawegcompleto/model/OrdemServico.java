@@ -62,7 +62,7 @@ public class OrdemServico {
         this.status = StatusOS.AGUARDANDO_APROVACAO;
     }
 
-    public void AprovarEEncerrar() {
+    public void aprovarEEncerrar() {
         this.status = StatusOS.CONCLUIDA;
         this.dataFechamento =  LocalDateTime.now();
     }
