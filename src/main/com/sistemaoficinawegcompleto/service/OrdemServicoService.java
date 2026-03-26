@@ -73,7 +73,7 @@ public class OrdemServicoService {
             );
         }
 
-        if (ordemServico.getStatus() == StatusOS.AGUARDANDO_APROVACAO) {
+        if (ordemServico.getStatus() != StatusOS.AGUARDANDO_APROVACAO) {
             throw new IllegalStateException(
                     "OS #" + osId + " não está aguardando aprovação. Status atual: " + ordemServico.getStatus()
             );
@@ -83,7 +83,7 @@ public class OrdemServicoService {
     }
 
     // Consultas
-    public List<OrdemServico> listarTodos() {
+    public List<OrdemServico> listarTodas() {
         return ordemServicoRepository.listarTodas();
     }
 
