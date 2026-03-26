@@ -50,6 +50,10 @@ public class OrdemServico {
         }
 
         this.alunosEscalados.add(aluno);
+
+        if (this.status == StatusOS.ABERTA) {
+            this.status = StatusOS.EXECUTANDO;
+        }
     }
 
     public void registrarExecucao(String materiaisUsados, String conclusaoTecnica) {
@@ -72,12 +76,40 @@ public class OrdemServico {
         return equipamento;
     }
 
+    public String getNumeroPatrimonio() {
+        return numeroPatrimonio;
+    }
+
+    public String getDefeitoRelatado() {
+        return defeitoRelatado;
+    }
+
+    public String getMateriaisUsados() {
+        return materiaisUsados;
+    }
+
+    public String getConclusaoTecnica() {
+        return conclusaoTecnica;
+    }
+
     public StatusOS getStatus() {
         return status;
     }
 
+    public Prioridade getPrioridade() {
+        return prioridade;
+    }
+
     public Professor getProfessorResponsavel() {
         return professorResponsavel;
+    }
+
+    public LocalDateTime getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public LocalDateTime getDataFechamento() {
+        return dataFechamento;
     }
 
     public List<Aluno> getAlunosEscalados() {
@@ -88,8 +120,8 @@ public class OrdemServico {
     public String toString() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm");
 
-        return String.format("OS #%04d | %s (Patrimônio: %s) | Status: %s | Prioridade: %s | Abertura: %s ",
-                id, equipamento, numeroPatrimonio, status, prioridade, dataAbertura.format(dtf));
+        return String.format("OS #%04d | %-20s | Status: %-22s | Prioridade: %-7s | Prof: %s | Abertura: %s ",
+                id, equipamento, status, prioridade, professorResponsavel.getNome(), dataAbertura.format(dtf));
     }
 
 }
