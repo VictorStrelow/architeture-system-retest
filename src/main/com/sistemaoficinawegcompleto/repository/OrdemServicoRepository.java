@@ -6,25 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class OrdemServiceRepository {
+public class OrdemServicoRepository {
 
-    private List<OrdemServico> ordemServico = new ArrayList<>();
-    private int proximoId = 1000;
+    private List<OrdemServico> ordens = new ArrayList<>();
+    private int proximoId = 1;
 
     public void salvar(OrdemServico os) {
-        ordemServico.add(os);
-    }
-
-    public Optional<OrdemServico> buscarPorId(int id) {
-        return ordemServico.stream().filter(s -> s.getId() == id).findFirst();
+        ordens.add(os);
     }
 
     private int gerarId() {
         return proximoId++;
     }
 
+    public Optional<OrdemServico> buscarPorId(int id) {
+        return ordens.stream().filter(s -> s.getId() == id).findFirst();
+    }
+
     public List<OrdemServico> listarTodas() {
-        return new  ArrayList<>(ordemServico);
+        return new  ArrayList<>(ordens);
     }
 
 }
